@@ -3,31 +3,49 @@ import java.util.*;
 
 class AddressBookSystem {
     public static void main(String args[]) {
-        System.out.println("	 Welcome To AddressBook !");
-        System.out.println("	***********************");
+        
         Contacts.createContact();
+        Contacts.createSecondContact();
         Contacts.editContact();
         Contacts.deleteContact();
+
     }
 }
 
 class Contacts {
     static Scanner sc = new Scanner(System.in);
-    static ArrayList<String> contacts = new ArrayList<String>(7);
+    static ArrayList<String> firstContact = new ArrayList<String>(7);
+    static ArrayList<String> secondContact = new ArrayList<String>(7);
 
     static void createContact() {
 
-        System.out.println(" ");
+        System.out.println("Enter first contact details:  ");
         System.out.println("name address city state zip phoneNo email  : ");
 
         /** adding contact details from console **/
         for (int i = 0; i < 7; i++) {
             String s = sc.nextLine();
-            contacts.add(s);
+            firstContact.add(s);
         }
         System.out.println(" -------------------------------------------");
         System.out.println("contact details added :");
-        System.out.println(contacts);
+        System.out.println(firstContact);
+    }
+
+    static void createSecondContact() {
+
+        System.out.println("******************************************");
+        System.out.println("Create Second Contact details: ");
+        System.out.println("name address city state zip phoneNo email  : ");
+
+        /** adding contact details from console **/
+        for (int i = 0; i < 7; i++) {
+            String s = sc.nextLine();
+            secondContact.add(s);
+        }
+        System.out.println(" -------------------------------------------");
+        System.out.println("contact details added :");
+        System.out.println(secondContact);
     }
 
     static void editContact() {
@@ -40,49 +58,50 @@ class Contacts {
         String detailToEdit = sc.nextLine();
 
         switch (detailToEdit) {
-            case "name" :
+            case "name":
                 System.out.println("Enter the name to edit  : ");
                 String n = sc.nextLine();
-                contacts.set(0, n);
+                firstContact.set(0, n);
                 break;
-            case "address" :
+            case "address":
                 System.out.println("Enter the address to edit  : ");
                 String a = sc.nextLine();
-                contacts.set(1, a);
+                firstContact.set(1, a);
                 break;
-            case "city" :
+            case "city":
                 System.out.println("Enter the name to edit  : ");
                 String city = sc.nextLine();
-                contacts.set(2, city);
+                firstContact.set(2, city);
                 break;
-            case "state" :
+            case "state":
                 System.out.println("Enter the name to edit  : ");
                 String state = sc.nextLine();
-                contacts.set(3, state);
+                firstContact.set(3, state);
                 break;
-            case "zip" :
+            case "zip":
                 System.out.println("Enter the name to edit  : ");
                 String zip = sc.nextLine();
-                contacts.set(5, zip);
+                firstContact.set(5, zip);
                 break;
-            case "phone" :
+            case "phone":
                 System.out.println("Enter the name to edit  : ");
                 String phone = sc.nextLine();
-                contacts.set(6, phone);
+                firstContact.set(6, phone);
                 break;
-            case "email" :
+            case "email":
                 System.out.println("Enter the name to edit  : ");
                 String email = sc.nextLine();
-                contacts.set(7, email);
+                firstContact.set(7, email);
                 break;
-            default :
+            default:
                 System.out.println("no edit match  : ");
 
         }
 
         System.out.println("----------------------------------------------------- ");
         System.out.println("edited contact details are :");
-        System.out.println(contacts);
+        System.out.println(firstContact);
+        System.out.println(secondContact);
 
     }
 
@@ -94,15 +113,17 @@ class Contacts {
 
         /**deleting the added contact using Arraylist method **/
 
-        if(nameToDelete.equals(contacts.get(0))) {
-            contacts.removeAll(contacts);
+        if (nameToDelete.equals(firstContact.get(0))) {
+            firstContact.removeAll(firstContact);
             System.out.println(" ");
             System.out.println("**contact deleted successfully**");
-            
+
         } else {
             System.out.println("No name found");
         }
 
-        System.out.println(contacts);
+        System.out.println(firstContact);
     }
 }
+
+
