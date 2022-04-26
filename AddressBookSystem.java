@@ -1,22 +1,21 @@
 import java.util.Scanner;
 import java.util.*;
 
-class AddressBookSystem
-{
-    public static void main(String args[])
-    {
+class AddressBookSystem {
+    public static void main(String args[]) {
         System.out.println("	 Welcome To AddressBook !");
         System.out.println("	***********************");
         Contacts.createContact();
         Contacts.editContact();
+        Contacts.deleteContact();
     }
 }
 
 class Contacts {
+    static Scanner sc = new Scanner(System.in);
     static ArrayList<String> contacts = new ArrayList<String>(7);
 
     static void createContact() {
-        Scanner sc = new Scanner(System.in);
 
         System.out.println(" ");
         System.out.println("name address city state zip phoneNo email  : ");
@@ -32,7 +31,7 @@ class Contacts {
     }
 
     static void editContact() {
-        Scanner sc = new Scanner(System.in);
+
         System.out.println(" ");
         System.out.println("Enter which detail you have to edit  : ");
         System.out.println("name or address or city or state or zip or phone or email  : ");
@@ -85,5 +84,25 @@ class Contacts {
         System.out.println("edited contact details are :");
         System.out.println(contacts);
 
+    }
+
+    static void deleteContact() {
+
+        System.out.println(" ");
+        System.out.println("Enter the name of contact that have to delete  : ");
+        String nameToDelete = sc.nextLine();
+
+        /**deleting the added contact using Arraylist method **/
+
+        if(nameToDelete.equals(contacts.get(0))) {
+            contacts.removeAll(contacts);
+            System.out.println(" ");
+            System.out.println("**contact deleted successfully**");
+            
+        } else {
+            System.out.println("No name found");
+        }
+
+        System.out.println(contacts);
     }
 }
